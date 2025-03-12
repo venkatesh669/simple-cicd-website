@@ -1,0 +1,24 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Triggers when you push to the 'main' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Runs the job on a virtual machine
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checks out your code
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2  # Sets up Node.js (this is optional if you don’t need Node.js)
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.1.0
+        with:
+          branch: gh-pages  # Deploys to the 'gh-pages' branch
+          folder: .  # Deploy the contents of the root folder (index.html, styles.css)
+
